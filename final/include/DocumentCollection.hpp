@@ -17,6 +17,10 @@ public:
 
   // add text from the given filename to the model
   void addTextFromFile(std::string fname);
+  
+  unsigned getSize() {
+    return docVector.size();
+  }
 
   // print the model to a string ('a'=alpha, 'r'=reverse-alpha, 'c'=count)
   std::string toString(char order ='a') const;
@@ -31,8 +35,6 @@ private:
   void buildNgrams(const std::vector<std::string> &text);
   
   // stores actual ngram-count information
-  NgramCollection ngrams;
-  unsigned documentCount;
   std::vector<NgramCollection> docVector;
 };
 

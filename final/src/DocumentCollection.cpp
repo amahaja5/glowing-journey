@@ -39,14 +39,10 @@ void DocumentCollection :: addTextFromFile(std::string fname) {
 
   std::string word;
   std::vector<std::string> text; // the document will be stored here
-  for (unsigned i=1; i<ngrams.getN(); i++) {
-    text.push_back("<START_" + std::to_string(i) + ">"); // add n-1 start tags
-  }
   while (fin >> word) {
+    std::transform(word.begin(), word.end(), word.begin(), std::tolower);//convert to lower case
+	word.erase(std::remove_if(word.begin(), word.end(), ispunct), word.end());//remove punctuation
     text.push_back(word); // read words from the file and add them to the document 
-  }
-  for (unsigned i=1; i<ngrams.getN(); i++) {
-    text.push_back("<END_" + std::to_string(i) + ">"); // add n-1 end tags
   }
   fin.close(); // close the file
 
@@ -58,10 +54,10 @@ void DocumentCollection :: addTextFromFile(std::string fname) {
  * adds each n-gram to the model */
 void DocumentCollection :: buildNgrams(const std::vector<std::string> &text) {
   auto first = text.begin(); // first element
-  auto last = text.begin() + ngrams.getN(); // n-1th element
+  auto last = text.begin() + (docVector.at(docVector.getSize()-1)).getN(); // n-1th element
 
   while (last-1 != text.end()) {
-    ngrams.increment(first, last); // add ngrams until we run out
+    (docVector.at(docVector.getSize()-1)).increment(first, last); // add ngrams until we run out
     ++first;
     ++last;
   }
