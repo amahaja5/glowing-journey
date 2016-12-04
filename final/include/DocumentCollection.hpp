@@ -9,7 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <utility>
-
+#include <cmath>
 class DocumentCollection {
 
 public:
@@ -38,15 +38,16 @@ public:
   unsigned getSize() {
     return docVector.size();
   }
+  
+  double similarity(NgramCollection q, NgramCollection d);
+
+  int docFrequency(std::vector<std::string> term);
 
   // print the model to a string ('a'=alpha, 'r'=reverse-alpha, 'c'=count)
   std::string toString(char order ='a') const;
 
   // generate a new document string from the model
   std::string generateText() const;
-  
-  //similarity algorithm run using questionable doc and reference
-  double similarity(NgramCollection q, NgramCollection r);
 
 private:
   // read a list of paths from a file
@@ -57,6 +58,8 @@ private:
   
   // stores actual ngram-count information
   std::vector<std::pair<std::string,NgramCollection> > docVector;
+  
+  std::vector<std::pair<std::string, std::string> > plPairs;
 
   int n;
 };

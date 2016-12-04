@@ -91,8 +91,59 @@ std::string DocumentCollection :: toString(char order) const {
 }
 *///probably not needed
 
-double similarity(NgramCollection q, NgramCollection d) {
-	for (auto
+double DocumentCollection :: similarity(NgramCollection q, NgramCollection d) {
+	double sumTerm = 0;
+	//add whatever additional variables we need
+	// size of collection
+	// number of terms in q
+	// number of terms in d
+	for (auto itq = q.counts.begin(); itq != q.counts.end(); ++itq) {
+		for (auto itd = d.counts.begin(); itd != d.counts.end(); ++itd) {
+			if (itq->first == itd->first) {//check if common pair of n-grams
+				double h = (double) docFrequency(itq->first);
+				double occQ = (double) q.counts[itq->first];
+				double occD = (double) d.counts[itd->first];
+				sumTerm += (1/h)/ (1 + std::abs(occD - occQ));
+			}
+		}
+	}
+	double numTermsD = (double) d.counts.size();
+	double numTermsQ = (double) q.counts.size();
+	double outerTerm = getSize()/(1 + std::log(1 + std::abs(numTermsD - numTermsQ)));
+	return (outerTerm*sumTerm);
+}
+
+int DocumentCollection :: docFrequency(std::vector<std::string> term) {
+	int count = 0;
+	bool seen = false;
+	for (const auto& itp : docVector) {
+		for (const auto& itNGrams : itp.second.counts) {
+			if (itNGrams.first == term) {
+				seen = true;
+			}
+		}
+		if (seen) {
+			count++;
+		}
+	}
+	return count;
+}
+
+void examineAllDocs(double sensitivity) {
+	//call existing similarity function to find plagiarism of all docs and store in vector of string pairs
+	for (const auto& outerIter : docVector) {//change this cant use for each
+		for (const auto& innerIter : docVector) {
+			//add a cout for comparing
+			if (
+
+			double docScore = similarity(outerIter.second.counts, innerIter.second.counts + 1);
+			
+			if (docScore >= sensitivity) {
+		    	std::pair<std::string, std::string> > tempStrPair(outerIter
+
+			}
+		}
+	}
 
 
 }
