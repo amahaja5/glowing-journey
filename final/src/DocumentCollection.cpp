@@ -129,18 +129,18 @@ int DocumentCollection :: docFrequency(std::vector<std::string> term) {
 	return count;
 }
 
-void examineAllDocs(double sensitivity) {
+void DocumentCollection :: examineAllDocs(double sensitivity) {
 	//call existing similarity function to find plagiarism of all docs and store in vector of string pairs
-	for (const auto& outerIter : docVector) {//change this cant use for each
-		for (const auto& innerIter : docVector) {
+	for (auto outerIter = docVector.begin(); outerIter != docVector.end(); ++outerIter) {//change this cant use for each
+		for (auto innerIter = outerIter + 1; innerIter != docVector.end(); ++innerIter) {
 			//add a cout for comparing
-			if (
+			std::cout << "Comparing: " + outerIter->first << " to " + innerIter->first;
 
-			double docScore = similarity(outerIter.second.counts, innerIter.second.counts + 1);
+			double docScore = similarity(outerIter->second, innerIter->second);
 			
 			if (docScore >= sensitivity) {
-		    	std::pair<std::string, std::string> > tempStrPair(outerIter
-
+		    	std::pair<std::string, std::string> tempStrPair(outerIter->first, innerIter->first);
+				plPairs.push_back(tempStrPair);			
 			}
 		}
 	}

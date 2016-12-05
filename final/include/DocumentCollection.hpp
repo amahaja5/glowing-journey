@@ -43,6 +43,8 @@ public:
 
   int docFrequency(std::vector<std::string> term);
 
+  void examineAllDocs(double); 
+
   // print the model to a string ('a'=alpha, 'r'=reverse-alpha, 'c'=count)
   std::string toString(char order ='a') const;
 
