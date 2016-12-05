@@ -58,6 +58,8 @@ private:
   // add ngrams to the model from a vector of words
   void buildNgrams(const std::vector<std::string> &text);
   
+  void printListOfPairs();
+
   // stores actual ngram-count information
   std::vector<std::pair<std::string,NgramCollection> > docVector;
   

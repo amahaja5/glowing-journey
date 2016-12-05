@@ -144,6 +144,10 @@ void DocumentCollection :: examineAllDocs(double sensitivity) {
 			}
 		}
 	}
+}
 
-
+void DocumentCollection :: printListOfPairs() {
+	for (auto it = plPairs.begin(); it != plPairs.end(); ++it) {
+		std::cout << "Similar Pair: " + it->first + " and " + it->second;
+	}
 }
