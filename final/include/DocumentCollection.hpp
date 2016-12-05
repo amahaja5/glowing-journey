@@ -50,6 +50,8 @@ public:
 
   // generate a new document string from the model
   std::string generateText() const;
+  
+  void printListOfPairs();
 
 private:
   // read a list of paths from a file
@@ -58,8 +60,6 @@ private:
   // add ngrams to the model from a vector of words
   void buildNgrams(const std::vector<std::string> &text);
   
-  void printListOfPairs();
-
   // stores actual ngram-count information
   std::vector<std::pair<std::string,NgramCollection> > docVector;
   

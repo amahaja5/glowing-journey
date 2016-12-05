@@ -19,6 +19,7 @@ std::string DocumentCollection :: getDocName(unsigned index) {
 void DocumentCollection :: readFileList(std::string fname) {
   std::vector<std::string> nameList = readNames(fname);
   for (std::string &name : nameList) {
+  	std::cout << "Reading: " << name + "\n";
     addTextFromFile(name);
   }
 }
@@ -134,7 +135,7 @@ void DocumentCollection :: examineAllDocs(double sensitivity) {
 	for (auto outerIter = docVector.begin(); outerIter != docVector.end(); ++outerIter) {//change this cant use for each
 		for (auto innerIter = outerIter + 1; innerIter != docVector.end(); ++innerIter) {
 			//add a cout for comparing
-			std::cout << "Comparing: " + outerIter->first << " to " + innerIter->first;
+			std::cout << "Comparing: " + outerIter->first << " to " + innerIter->first + "\n";
 
 			double docScore = similarity(outerIter->second, innerIter->second);
 			
@@ -148,6 +149,6 @@ void DocumentCollection :: examineAllDocs(double sensitivity) {
 
 void DocumentCollection :: printListOfPairs() {
 	for (auto it = plPairs.begin(); it != plPairs.end(); ++it) {
-		std::cout << "Similar Pair: " + it->first + " and " + it->second;
+		std::cout << "Similar Pair: " + it->first + " and " + it->second + "\n";
 	}
 }
