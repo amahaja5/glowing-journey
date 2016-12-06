@@ -54,11 +54,11 @@ void DocumentCollection :: addTextFromFile(std::string fname) {
   std::string word;
   std::vector<std::string> text; // the document will be stored here
   while (fin >> word) {
-    /*
-	 * fix this later 
-    std::transform(word.begin(), word.end(), word.begin(), std::tolower);//convert to lower case
+    
+    std::transform(word.begin(), word.end(), word.begin(), ::tolower);//convert to lower case
+	
 	word.erase(std::remove_if(word.begin(), word.end(), ispunct), word.end());//remove punctuation
-	*/
+	
     text.push_back(word); // read words from the file and add them to the document 
   }
   fin.close(); // close the file
@@ -104,13 +104,13 @@ double DocumentCollection :: similarity(NgramCollection q, NgramCollection d) {
 				double h = (double) docFrequency(itq->first);
 				double occQ = (double) q.counts[itq->first];
 				double occD = (double) d.counts[itd->first];
-				sumTerm += (1/h)/ (1 + std::abs(occD - occQ));
+				sumTerm += (getSize()/h)/(1 + std::abs(occD - occQ));
 			}
 		}
 	}
 	double numTermsD = (double) d.counts.size();
 	double numTermsQ = (double) q.counts.size();
-	double outerTerm = getSize()/(1 + std::log(1 + std::abs(numTermsD - numTermsQ)));
+	double outerTerm = 1/(1 + std::log(1 + std::abs(numTermsD - numTermsQ)));
 	return (outerTerm*sumTerm);
 }
 
@@ -127,6 +127,7 @@ int DocumentCollection :: docFrequency(std::vector<std::string> term) {
 			count++;
 		}
 	}
+	//std::cout << std::to_string(count) + "\n";//for testing purposes
 	return count;
 }
 
@@ -137,8 +138,9 @@ void DocumentCollection :: examineAllDocs(double sensitivity) {
 			//add a cout for comparing
 			std::cout << "Comparing: " + outerIter->first << " to " + innerIter->first + "\n";
 
-			double docScore = similarity(outerIter->second, innerIter->second);
-			
+			double docScore = similarity(outerIter->second, innerIter->second)/similarity(outerIter->second, outerIter->second);
+			//print out document similarity scores to check
+			std::cout << std::to_string(docScore) + "\n";
 			if (docScore >= sensitivity) {
 		    	std::pair<std::string, std::string> tempStrPair(outerIter->first, innerIter->first);
 				plPairs.push_back(tempStrPair);			
