@@ -1,0 +1,10 @@
+../tests/testFiles/bmu392.txt
+../tests/testFiles/bmu5.txt
+../tests/testFiles/bwa0.txt
+../tests/testFiles/bwa81.txt
+../tests/testFiles/catchmeifyoucan.txt
+../tests/testFiles/ecu201.txt
+../tests/testFiles/exv254.txt
+../tests/testFiles/hal10.txt
+../tests/testFiles/sra119.txt
+../tests/testFiles/tyc12.txt

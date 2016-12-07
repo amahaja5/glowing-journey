@@ -1,0 +1,4 @@
+../tests/testFiles/file1.txt
+../tests/testFiles/file2.txt
+../tests/testFiles/file2diff.txt
+../tests/testFiles/file1Copied.txt
