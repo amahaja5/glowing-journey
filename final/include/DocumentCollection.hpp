@@ -51,7 +51,7 @@ public:
   // generate a new document string from the model
   std::string generateText() const;
   
-  void printListOfPairs();
+  void printListOfPairs(double);
 
 private:
   // read a list of paths from a file
@@ -64,6 +64,8 @@ private:
   std::vector<std::pair<std::string,NgramCollection> > docVector;
   
   std::vector<std::pair<std::string, std::string> > plPairs;
+  
+  std::map<std::pair<std::string, std::string>, double> pairsWithScore;
 
   int n;
 };

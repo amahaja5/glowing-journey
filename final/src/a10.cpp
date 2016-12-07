@@ -22,16 +22,17 @@ int main(int argc, char** argv) {
 	collection.readFileList(fileName);
 
 	if (sChoice == 'h') {
-		collection.examineAllDocs(0.05);
+		collection.examineAllDocs(0.0);
+		collection.printListOfPairs(0.05);
 	} else if (sChoice == 'm') {
-		collection.examineAllDocs(0.10);
+		collection.examineAllDocs(0.0);
+		collection.printListOfPairs(0.15);
 	} else if (sChoice == 'l') {
-		collection.examineAllDocs(0.15);
+		collection.examineAllDocs(0.0);
+		collection.printListOfPairs(0.25);
 	} else {
 		std::cerr << "Unknown command line argument\n";
 	}
 	
-	collection.printListOfPairs();
-
 	return 0;
 }
