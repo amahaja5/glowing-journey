@@ -1,3 +1,11 @@
+/** NgramCollection class. Creates and 
+ * stores a Ngram (vector of strings, and the associated
+ * frequency. It really only holds the map, and can increment
+ * when faced with a set of iterators
+ *
+ * authors: Avi Mahajan (amahaja5) and Nick Skacel (nskacel1)
+ * last modified: 12/7/16
+ */
 #include "NgramCollection.hpp"
 #include <iostream>
 #include <sstream>

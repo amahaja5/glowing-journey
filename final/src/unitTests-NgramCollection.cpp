@@ -1,11 +1,12 @@
 /*
  * Unit test cases for NgramCollection class.
  *
- * While you should definitely add lots more code, try not to remove
- * or modify any of the test cases we've provided
+ * Since there's only one real function, there's only one 
+ * method to test
  *
- * Author: Avi Mahajan (adapted from scaffolding code)
- * Date last modified: 11/14/2016
+ * Author: Avi Mahajan (amahaja5) and Nick Skacel (nskacel1) 
+ * (adapted from old scaffolding code)
+ * Date last modified: 12/7/2016
  */
 
 #include "../include/catch.hpp" // simple unit-testing framework

@@ -1,5 +1,10 @@
 #ifndef CS120_DOCUMENT_COLLECTION_HPP
 #define CS120_DOCUMENT_COLLECTION_HPP
+/** Header file for DocumentCollection.
+ *
+ * Author: Avi Mahajan (amahaja5) and Nick Skacel (nskacel1)
+ * modified: 12/7/16
+ */
 #include <vector>
 #include <string>
 #include <cassert>

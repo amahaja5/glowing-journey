@@ -1,3 +1,13 @@
+/** Document Collection class implementation
+ *
+ * Our Documentcolllection class has most of the
+ * functions that handle input/output, it also 
+ * creates 3-grams, and feeds the 3-grams for different
+ * files into the similiarity algorithm.
+ *
+ * author: Avi Mahajan (amahaja5) and Nick Skacel (nskacel1)
+ * last modified: 12/7/16
+ */
 #include "DocumentCollection.hpp"
 #include <iostream>
 #include <fstream>

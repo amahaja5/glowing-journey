@@ -1,5 +1,11 @@
 #ifndef _CS120_NGRAM_COLLECTION_HPP
 #define _CS120_NGRAM_COLLECTION_HPP
+/** Header class for NgramCollection.
+ *
+ * (adapted from example code)
+ * author:Avi Mahajan (amahaja5) and Nick Skacel (nskacel1)
+ * modified: 12/7/16
+ */
 #include <vector>
 #include <list>
 #include <map>

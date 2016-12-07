@@ -1,4 +1,9 @@
-//This will be the driver file which contains main
+/** Driver class for a10. This handles input and
+ * calls the functions that create output.
+ *
+ * Authors: Avi Mahajan (amahaja5) and Nick Skacel (nsckacel1)
+ * Date Last Modified: 12/7/16
+ */
 
 #include "NgramCollection.hpp"
 #include "DocumentCollection.hpp"

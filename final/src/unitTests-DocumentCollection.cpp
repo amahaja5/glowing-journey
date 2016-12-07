@@ -1,13 +1,15 @@
 /*
  * Unit test cases for DocumentCollection class.
+ * The similarity tests require a much bigger data set,
+ * since at very small numbers the algorithm will fluctuate
+ * wildly
  *
- * decided not to test the two output functions, as they 
- * were both void and simply printed the values of another 
- * function that we've used.
+ * Most of the outputs are tested using function testing
+ * done by the shell script.
  *
- * Author: Avi Mahajan (amahaja5@jhu.edu)
- * Date Modified: 11/14/2016
- * Date Created: 11/14/2016
+ * Author: Avi Mahajan (amahaja5) and Nick Skacel (nskacel1)
+ * last modified: 12/7/2016
+ * Date Created: 12/7/2016
  */
 
 #include "../include/catch.hpp" // simple unit-testing framework
