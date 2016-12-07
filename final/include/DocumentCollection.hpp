@@ -47,8 +47,6 @@ public:
 
   void examineAllDocs(double); 
 
-
-  
   void printListOfPairs();
 
 private:

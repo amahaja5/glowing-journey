@@ -31,15 +31,18 @@ $(shell mkdir -p $(BIN_DIR))
 
 all: $(BIN_DIR)/a10 $(BIN_DIR)/unitTest
 
-test: $(BIN_DIR)/unitTest
-	$(BIN_DIR)/unitTest
+test: $(BIN_DIR)/NgramCollectionTest $(BIN_DIR)/DocumentCollectionTest
 
 $(BIN_DIR)/a10: $(OBJ_DIR)/a10.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/DocumentCollection.o 
 	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/a10.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/DocumentCollection.o -o $(BIN_DIR)/a10
 
 #comment out for now
-$(BIN_DIR)/unitTest: $(OBJ_DIR)/unitTests-NgramCollection.o $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/NgramCollection.o
-	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/unitTests-NgramCollection.o $(OBJ_DIR)/NgramCollection.o -o $(BIN_DIR)/unitTest
+$(BIN_DIR)/NgramCollectionTest: $(OBJ_DIR)/unitTests-NgramCollection.o $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/NgramCollection.o
+	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/unitTests-NgramCollection.o $(OBJ_DIR)/NgramCollection.o -o $(BIN_DIR)/NgramCollectionTest
+
+$(BIN_DIR)/DocumentCollectionTest: $(OBJ_DIR)/unitTests-DocumentCollection.o $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/DocumentCollection.o
+	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/unitTests-DocumentCollection.o $(OBJ_DIR)/DocumentCollection.o $(OBJ_DIR)/NgramCollection.o -o $(BIN_DIR)/DocumentCollectionTest
+
 
 $(OBJ_DIR)/a10.o: a10.cpp 
 	$(GCC) $(CPPFLAGS) -O3 -c a10.cpp -o $(OBJ_DIR)/a10.o
@@ -49,6 +52,9 @@ $(OBJ_DIR)/unitTestDriver.o: unitTestDriver.cpp
 
 $(OBJ_DIR)/unitTests-NgramCollection.o: unitTests-NgramCollection.cpp 
 	$(GCC) $(CPPFLAGS) -c unitTests-NgramCollection.cpp -o $(OBJ_DIR)/unitTests-NgramCollection.o
+
+$(OBJ_DIR)/unitTests-DocumentCollection.o: unitTests-DocumentCollection.cpp 
+	$(GCC) $(CPPFLAGS) -c unitTests-DocumentCollection.cpp -o $(OBJ_DIR)/unitTests-DocumentCollection.o
 
 $(OBJ_DIR)/NgramCollection.o: NgramCollection.cpp $(INC_DIR)/NgramCollection.hpp 
 	 $(GCC) $(CPPFLAGS) -O3 -c NgramCollection.cpp -o $(OBJ_DIR)/NgramCollection.o
