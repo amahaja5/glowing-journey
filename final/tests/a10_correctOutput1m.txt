@@ -1,0 +1,7 @@
+Comparing: ../tests/testFiles/file1.txt to ../tests/testFiles/file2.txt
+Comparing: ../tests/testFiles/file1.txt to ../tests/testFiles/file2diff.txt
+Comparing: ../tests/testFiles/file1.txt to ../tests/testFiles/file1Copied.txt
+Comparing: ../tests/testFiles/file2.txt to ../tests/testFiles/file2diff.txt
+Comparing: ../tests/testFiles/file2.txt to ../tests/testFiles/file1Copied.txt
+Comparing: ../tests/testFiles/file2diff.txt to ../tests/testFiles/file1Copied.txt
+Similar Pair: ../tests/testFiles/file1.txt and ../tests/testFiles/file1Copied.txt

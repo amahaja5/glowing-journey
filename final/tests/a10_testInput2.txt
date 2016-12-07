@@ -4,7 +4,7 @@
 ../tests/testFiles/bwa81.txt
 ../tests/testFiles/catchmeifyoucan.txt
 ../tests/testFiles/ecu201.txt
-../tests/testFiles/exv254.txt
+../tests/testFiles/esv254.txt
 ../tests/testFiles/hal10.txt
 ../tests/testFiles/sra119.txt
 ../tests/testFiles/tyc12.txt
