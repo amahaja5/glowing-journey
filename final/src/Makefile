@@ -42,7 +42,7 @@ $(BIN_DIR)/a10: $(OBJ_DIR)/a10.o $(OBJ_DIR)/NgramCollection.o $(OBJ_DIR)/Documen
 #	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/unitTests-NgramCollection.o $(OBJ_DIR)/NgramCollection.o -o $(BIN_DIR)/unitTest
 
 $(OBJ_DIR)/a10.o: a10.cpp 
-	$(GCC) $(CPPFLAGS) -c a10.cpp -o $(OBJ_DIR)/a10.o
+	$(GCC) $(CPPFLAGS) -O3 -c a10.cpp -o $(OBJ_DIR)/a10.o
 
 #$(OBJ_DIR)/unitTestDriver.o: unitTestDriver.cpp 
 #	$(GCC) $(CPPFLAGS) -c unitTestDriver.cpp -o $(OBJ_DIR)/unitTestDriver.o
@@ -51,10 +51,10 @@ $(OBJ_DIR)/a10.o: a10.cpp
 #	$(GCC) $(CPPFLAGS) -c unitTests-NgramCollection.cpp -o $(OBJ_DIR)/unitTests-NgramCollection.o
 
 $(OBJ_DIR)/NgramCollection.o: NgramCollection.cpp $(INC_DIR)/NgramCollection.hpp 
-	 $(GCC) $(CPPFLAGS) -c NgramCollection.cpp -o $(OBJ_DIR)/NgramCollection.o
+	 $(GCC) $(CPPFLAGS) -O3 -c NgramCollection.cpp -o $(OBJ_DIR)/NgramCollection.o
 
 $(OBJ_DIR)/DocumentCollection.o: DocumentCollection.cpp $(INC_DIR)/DocumentCollection.hpp $(INC_DIR)/NgramCollection.hpp
-	 $(GCC) $(CPPFLAGS) -c DocumentCollection.cpp -o $(OBJ_DIR)/DocumentCollection.o
+	 $(GCC) $(CPPFLAGS) -O3 -c DocumentCollection.cpp -o $(OBJ_DIR)/DocumentCollection.o
 
 
 ###############################

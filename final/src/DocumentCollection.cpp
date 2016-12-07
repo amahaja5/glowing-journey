@@ -84,14 +84,6 @@ void DocumentCollection :: buildNgrams(const std::vector<std::string> &text, std
 
 }
 
-
-/* toString just returns whatever the NgramCollection toString() gives us */
-/*
-std::string DocumentCollection :: toString(char order) const {
-   return ngrams.toString(order);
-}
-*///probably not needed
-
 double DocumentCollection :: similarity(NgramCollection q, NgramCollection d) {
 	double sumTerm = 0;
 	//add whatever additional variables we need
@@ -102,8 +94,8 @@ double DocumentCollection :: similarity(NgramCollection q, NgramCollection d) {
 		for (auto itd = d.counts.begin(); itd != d.counts.end(); ++itd) {
 			if (itq->first == itd->first) {//check if common pair of n-grams
 				double h = (double) docFrequency(itq->first);
-				double occQ = (double) q.counts[itq->first];
-				double occD = (double) d.counts[itd->first];
+				double occQ = (double) itq->second;
+				double occD = (double) itd->second;
 				sumTerm += (1/h)/(1 + std::abs(occD - occQ));
 			}
 		}
@@ -116,11 +108,11 @@ double DocumentCollection :: similarity(NgramCollection q, NgramCollection d) {
 
 int DocumentCollection :: docFrequency(std::vector<std::string> term) {
 	int count = 0;
-	bool seen = false;
+	int seen = 0;
 	for (const auto& itp : docVector) {
 		for (const auto& itNGrams : itp.second.counts) {
 			if (itNGrams.first == term) {
-				seen = true;
+				seen = 1;
 			}
 		}
 		if (seen) {
