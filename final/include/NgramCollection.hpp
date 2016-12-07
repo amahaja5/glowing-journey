@@ -15,7 +15,7 @@ public:
   //Also seeds the RNG (there are better ways of ensuring this only happens once, but this will probably be good enough)
   //Note that you may want to change this to a fixed seed
   //for testing purposes.
-  NgramCollection(unsigned num) : n(num) { srand(time(NULL)); }
+  NgramCollection(unsigned num) : n(num) { }
 
   //Increase count for NgramCollection representing values from begin up to end
   //begin is an iterator to the first word in the Ngram,
@@ -26,11 +26,6 @@ public:
 
   //Retrieve the value for N
   unsigned getN() const { return n; }
-
-  //Based on the probability distribution present in this NgramCollection, select
-  //a word to follow the N-1 strings from begin up to end
-  std::string pickWord(std::list<std::string>::const_iterator begin,
-		       std::list<std::string>::const_iterator end) const;
 
   //the collection of entries in this NgramCollection
   std::map<std::vector<std::string>, unsigned> counts;

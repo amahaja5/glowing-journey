@@ -43,17 +43,13 @@ public:
   
   double similarity(NgramCollection q, NgramCollection d);
 
-  int docFrequency(std::vector<std::string> term);
+//  int docFrequency(std::vector<std::string> term);
 
   void examineAllDocs(double); 
 
-  // print the model to a string ('a'=alpha, 'r'=reverse-alpha, 'c'=count)
-  std::string toString(char order ='a') const;
 
-  // generate a new document string from the model
-  std::string generateText() const;
   
-  void printListOfPairs(double);
+  void printListOfPairs();
 
 private:
   // read a list of paths from a file
@@ -67,7 +63,7 @@ private:
   
   std::vector<std::pair<std::string, std::string> > plPairs;
   
-  std::map<std::pair<std::string, std::string>, double> pairsWithScore;
+//  std::map<std::pair<std::string, std::string>, double> pairsWithScore;
 
   int n;
 };

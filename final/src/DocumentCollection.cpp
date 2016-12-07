@@ -20,7 +20,7 @@ std::string DocumentCollection :: getDocName(unsigned index) {
 void DocumentCollection :: readFileList(std::string fname) {
   std::vector<std::string> nameList = readNames(fname);
   for (std::string &name : nameList) {
-  	std::cout << "Reading: " << name + "\n";
+//  	std::cout << "Reading: " << name + "\n";
     addTextFromFile(name);
   }
 }
@@ -140,34 +140,18 @@ void DocumentCollection :: examineAllDocs(double sensitivity) {
 			double docScore = similarity(outerIter->second, innerIter->second);//similarity(outerIter->second, outerIter->second);
 			//print out document similarity scores to check
 			//std::cout << std::to_string(similarity(outerIter->second, outerIter->second)) + "\n";
-			std::cout << std::to_string(docScore) + "\n";
-			/*
 			if (docScore >= sensitivity) {
 		    	std::pair<std::string, std::string> tempStrPair(outerIter->first, innerIter->first);
 				plPairs.push_back(tempStrPair);			
 			}
-			*/
-			std::pair<std::string, std::string> temp(outerIter->first, innerIter->first);
-			pairsWithScore[temp] = docScore;
+//			std::pair<std::string, std::string> temp(outerIter->first, innerIter->first);
+//			pairsWithScore[temp] = docScore;
 		}
 	}
 }
 
-void DocumentCollection :: printListOfPairs(double sensitivity) {
-	double maxValue = 0;
-	for (auto it = pairsWithScore.begin(); it != pairsWithScore.end(); ++it) {
-		if (it->second > maxValue) {
-			maxValue = it->second;
-		}
-	}
-
-	//find similar pairs based on max value
-	double threshold = maxValue * sensitivity;
-	for (auto iter = pairsWithScore.begin(); iter != pairsWithScore.end(); ++iter) {
-		if (iter->second > threshold) {	
-			std::cout << "Similar Pair: " + (iter->first).first + " and " + (iter->first).second + "\n";
-		}
+void DocumentCollection :: printListOfPairs() {
+    for (auto iter = plPairs.begin(); iter != plPairs.end(); ++iter) {
+	    std::cout << "Similar Pair: " + iter->first + " and " + iter->second + "\n";
 	}
 }
-
-

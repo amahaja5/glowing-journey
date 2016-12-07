@@ -15,6 +15,3 @@ void NgramCollection :: increment(std::vector<std::string>::const_iterator begin
   }
   counts[words]++; // increment the corresponding count
 }
-
-
-
