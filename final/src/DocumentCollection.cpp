@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 
+std::map<std::vector<std::string>, int> freq;
 
 void DocumentCollection :: pushBackDoc(std::pair<std::string,NgramCollection> docNgram) {
 	docVector.push_back(docNgram);
@@ -79,6 +80,9 @@ void DocumentCollection :: buildNgrams(const std::vector<std::string> &text, std
     ++first;
     ++last;
   }
+  for (auto it = tempNgrams.counts.begin(); it != tempNgrams.counts.end(); ++it) {
+	freq[it->first]++;
+  }
   std::pair <std::string, NgramCollection> tempPair (fname, tempNgrams);
   pushBackDoc(tempPair);
 
@@ -93,7 +97,9 @@ double DocumentCollection :: similarity(NgramCollection q, NgramCollection d) {
 	for (auto itq = q.counts.begin(); itq != q.counts.end(); ++itq) {
 		for (auto itd = d.counts.begin(); itd != d.counts.end(); ++itd) {
 			if (itq->first == itd->first) {//check if common pair of n-grams
-				double h = (double) docFrequency(itq->first);
+//				double j = (double) docFrequency(itq->first);
+				double h = (double) freq[itq->first];
+//				std::cout << "[" + std::to_string(h) + " " + std::to_string(j) + "]\n";
 				double occQ = (double) itq->second;
 				double occD = (double) itd->second;
 				sumTerm += (1/h)/(1 + std::abs(occD - occQ));
@@ -106,10 +112,11 @@ double DocumentCollection :: similarity(NgramCollection q, NgramCollection d) {
 	return (outerTerm*sumTerm);
 }
 
-int DocumentCollection :: docFrequency(std::vector<std::string> term) {
+/*int DocumentCollection :: docFrequency(std::vector<std::string> term) {
 	int count = 0;
 	int seen = 0;
 	for (const auto& itp : docVector) {
+		seen = 0;
 		for (const auto& itNGrams : itp.second.counts) {
 			if (itNGrams.first == term) {
 				seen = 1;
@@ -121,7 +128,7 @@ int DocumentCollection :: docFrequency(std::vector<std::string> term) {
 	}
 	//std::cout << std::to_string(count) + "\n";//for testing purposes
 	return count;
-}
+}*/
 
 void DocumentCollection :: examineAllDocs(double sensitivity) {
 	//call existing similarity function to find plagiarism of all docs and store in vector of string pairs

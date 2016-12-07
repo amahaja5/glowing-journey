@@ -10,6 +10,8 @@
 #include <fstream>
 #include <utility>
 #include <cmath>
+#include <map>
+
 class DocumentCollection {
 
 public:
