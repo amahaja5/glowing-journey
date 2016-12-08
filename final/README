@@ -1,4 +1,4 @@
-Avi Mahajan (amahaja5) and Nick Sckacel (nsckacel1)
+Avi Mahajan (amahaja5) and Nick Skacel (nskacel1)
 CS120, Fall 2016, Section 03
 
 File hierarchy
@@ -46,4 +46,94 @@ functions, however, mostly are output functions or are void return that modify
 our private container classes. The unit tests therefore cannot really test these
 functions that well.
 
-    The other aspect of our testing are the automatic tests that are  
+The testing binaries are created through writing 'make' while in the src folder.
+
+The other aspect of our testing are the automatic tests that are attempting to
+test the input and the output functions of the DocumentCollection. They provide
+small samples that the program can run. 
+
+3: Plan of Attack
+When choosing an algorithm, we wanted one that incorporates not only the 
+similarity between two pieces of text, but also the similarity in context 
+of a set of documents. We found an article from the Royal Melbourne 
+Institute of technology that included a survey of methods for identifying 
+plagiarized documents. (http://onlinelibrary.wiley.com/doi/10.1002/asi.10170/pdf).
+The paper discussed several different measures, such as the common cosine
+measure for similarity. 
+
+But since we wanted a comparison measure between different pairs of 
+documents, the paper on page 4 suggests using an identity measure. We 
+implemented identity measure 5, which uses a linear distance between similar
+terms of document (d) and a queried document (q). We decided on using an
+identity measure (variation 5) that incorporated the common terms in documents 
+and the entire set as well as length of the documents to assign a plagiarism score.
+
+The program also weights a word based the frequency of it appearing in all of the
+documents. If it appears in more documents in the set, it will be weighted less.
+The issue with this is that the score between two documents is related to the
+set as a whole, and the program might not be able to recognize two plagarized
+documents if the set is too small.
+
+We decided to implement this algorithm using a DocumentCollection class 
+which contains necessary parameters for implementing identity measure 5 
+in the article we have included a link to. 
+
+We also use a 3-gram stored in a vector as the NgramCollection, which would allow
+us to compare 3-word common phrases in different documents.
+
+4: Design
+In order to speed up performance, we preprocessed the nGramCollections (3-grams) as
+the documents were read. The nGramCollections were placed into a map with the
+document names. At the same time, every 3-gram was placed into a map with how
+many documents they appear in. Then we inputted it into the formula, looping
+over all the common words between two pairs of documents. The call to similarity
+would output a number between 0 and infinity (representing the same document)
+that quantifies the two document's similiarity.
+
+We left in the "Comparing <file1> and <file2>" text to make sure that even in 
+the largest case, the program is continually running.
+
+5: Flags
+h - high sensitivity, more likely to call two documents similar, so we 
+    arbitrarily defined it to be the pairs that have a score greater than 100.
+    our scores are between 1 and 1000 (kind of a log), so this represents about 
+    50% similarity.
+m - medium (default) sensitivity. We arbitrarily defined it to be greater than 200
+    This can be defined as about 55-60% similar.
+l = low sensitivity. Less likely to call two documents similar, so we arbitrarily
+    defined it as the pairs that have a score greater than 300. >60% similar.
+
+6: Timing
+small - 8-9 seconds
+medium - 45 seconds
+big - ~1.5-2 mins
+large and huge - probably too many to run in a reasonable enough time.
+
+7: Challenges
+Our program compares each document to each of the other ones so the algorithm is
+O(n^2). The similarity might be improved by pre-processing some of the data,
+especially the similiarities between the compared documents. However, I think
+we are especially limited by our algorithm being O(n^2). Our check is really
+quite thourough, and checks every word. Perhaps if we check fewer words, we could
+speed up the process. The other big challenge was testing our functions that have
+std::cout outputs. Since there isn't a toString like in java, it's harder to
+test those cases. That's why the automatic tests are more emphasized in our 
+testing suite.
+
+
+8: Future
+The biggest issue is of course the O(n^2) algorithm, even with all the
+preprocessing. The program can read the big file, but had issue with the much
+larger large and huge files. The biggest contributors to the high n in the 
+n^2 algorithm is that we are reading every word in every document. Perhaps there
+is a greedy way for us to ignore those files and 3-grams.
+
+Perhaps we could use a heuristic, and when there are a few words in 
+intersection, we can ignore the files pretty safely, so we aren't wasting 
+time on dissimilar documents. We could also compare starting with one word, 
+eliminating those that aren't similar, and thenincrementing the N-gram size by 1.
+For a given document, a 1-gram has fewer "terms" than a 3-gram, so it might be
+a useful tool to reject such words.   
+
+Maybe implement prescreening and more preprocessing, increased efficiency, multilayered tests and more fine-tuned sensitivity.
+ 
