@@ -12,7 +12,6 @@
 #include <iostream>
 #include <fstream>
 
-                                              // _M_constructor null error
 void DocumentCollection :: pushBackDoc(std::pair<std::string,NgramCollection> docNgram) {
 	docVector.push_back(docNgram);
 }
@@ -29,7 +28,6 @@ std::string DocumentCollection :: getDocName(unsigned index) {
 void DocumentCollection :: readFileList(std::string fname) {
   std::vector<std::string> nameList = readNames(fname);
   for (std::string &name : nameList) {
-//  	std::cout << "Reading: " << name + "\n";
     addTextFromFile(name);
   }
 }
@@ -97,18 +95,13 @@ void DocumentCollection :: buildNgrams(const std::vector<std::string> &text, std
 
 }
 
+/** Similiarity score measure, as mentioned in README */
 double DocumentCollection :: similarity(NgramCollection q, NgramCollection d) {
 	double sumTerm = 0;
-	//add whatever additional variables we need
-	// size of collection
-	// number of terms in q
-	// number of terms in d
 	for (auto itq = q.counts.begin(); itq != q.counts.end(); ++itq) {
 		for (auto itd = d.counts.begin(); itd != d.counts.end(); ++itd) {
 			if (itq->first == itd->first) {//check if common pair of n-grams
-//				double j = (double) docFrequency(itq->first);
 				double h = (double) freq[itq->first];
-//				std::cout << "[" + std::to_string(h) + " " + std::to_string(j) + "]\n";
 				double occQ = (double) itq->second;
 				double occD = (double) itd->second;
 				sumTerm += (1/h)/(1 + std::abs(occD - occQ));
@@ -121,46 +114,27 @@ double DocumentCollection :: similarity(NgramCollection q, NgramCollection d) {
 	return (outerTerm*sumTerm);
 }
 
-/*int DocumentCollection :: docFrequency(std::vector<std::string> term) {
-	int count = 0;
-	int seen = 0;
-	for (const auto& itp : docVector) {
-		seen = 0;
-		for (const auto& itNGrams : itp.second.counts) {
-			if (itNGrams.first == term) {
-				seen = 1;
-			}
-		}
-		if (seen) {
-			count++;
-		}
-	}
-	//std::cout << std::to_string(count) + "\n";//for testing purposes
-	return count;
-}*/
-
+/** Examine all of the documents at a specified similarity to print it out */
 void DocumentCollection :: examineAllDocs(double sensitivity) {
 	//call existing similarity function to find plagiarism of all docs and store in vector of string pairs
-	for (auto outerIter = docVector.begin(); outerIter != docVector.end(); ++outerIter) {//change this cant use for each
+	for (auto outerIter = docVector.begin(); outerIter != docVector.end(); ++outerIter) { 
 		for (auto innerIter = outerIter + 1; innerIter != docVector.end(); ++innerIter) {
-			//add a cout for comparing
+			//add a cout for comparing, this can be removed if unnecessary
 			std::cout << "Comparing: " + outerIter->first << " to " + innerIter->first + "\n";
 
-			double docScore = similarity(outerIter->second, innerIter->second);//similarity(outerIter->second, outerIter->second);
-			//print out document similarity scores to check
-			//std::cout << std::to_string(similarity(outerIter->second, outerIter->second)) + "\n";
+			double docScore = similarity(outerIter->second, innerIter->second);
 			if (docScore >= sensitivity) {
 		    	std::pair<std::string, std::string> tempStrPair(outerIter->first, innerIter->first);
 				plPairs.push_back(tempStrPair);			
 			}
-//			std::pair<std::string, std::string> temp(outerIter->first, innerIter->first);
-//			pairsWithScore[temp] = docScore;
 		}
 	}
+    std::cout << "\n\n";
 }
 
+/** print out pairs that are found to be plagarized */
 void DocumentCollection :: printListOfPairs() {
     for (auto iter = plPairs.begin(); iter != plPairs.end(); ++iter) {
-	    std::cout << "Similar Pair: " + iter->first + " and " + iter->second + "\n";
+	    std::cout << "Similar Pair: " + iter->first + " and " + iter->second + "\n\n";
 	}
 }

@@ -28,16 +28,14 @@ int main(int argc, char** argv) {
 
 	if (sChoice == 'h') {
 		collection.examineAllDocs(100);
-		collection.printListOfPairs();
 	} else if (sChoice == 'm') {
 		collection.examineAllDocs(200);
-		collection.printListOfPairs();
 	} else if (sChoice == 'l') {
 		collection.examineAllDocs(300);
-		collection.printListOfPairs();
 	} else {
 		std::cerr << "Unknown command line argument\n";
 	}
+    collection.printListOfPairs();
 	
 	return 0;
 }

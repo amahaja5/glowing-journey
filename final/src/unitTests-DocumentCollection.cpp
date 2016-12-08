@@ -26,12 +26,6 @@ using std::string;
 using std::vector;
 using std::list;
 
-/*TEST_CASE("readNames", "[readNames]") {
-    DocumentCollection d1(3);
-    vector<std::string> v1{"file1.txt", "file2.txt", "file3.txt"};
-    REQUIRE(d1.readNames("../test/sampleFileList.txt") == v1);
-}*/
-
 TEST_CASE("similarity of the same NgramCollection", "[similarity, buildNgrams]") {
     DocumentCollection d1(3);
     NgramCollection n1(3);

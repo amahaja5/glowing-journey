@@ -48,8 +48,6 @@ public:
   
   double similarity(NgramCollection q, NgramCollection d);
 
-//  int docFrequency(std::vector<std::string> term);
-
   void examineAllDocs(double); 
 
   void printListOfPairs();

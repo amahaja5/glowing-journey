@@ -43,3 +43,5 @@ Comparing: ../tests/testFiles/esv254.txt to ../tests/testFiles/tyc12.txt
 Comparing: ../tests/testFiles/hal10.txt to ../tests/testFiles/sra119.txt
 Comparing: ../tests/testFiles/hal10.txt to ../tests/testFiles/tyc12.txt
 Comparing: ../tests/testFiles/sra119.txt to ../tests/testFiles/tyc12.txt
+
+
