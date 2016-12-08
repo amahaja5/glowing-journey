@@ -1,0 +1,49 @@
+Avi Mahajan (amahaja5) and Nick Sckacel (nsckacel1)
+CS120, Fall 2016, Section 03
+
+File hierarchy
+a10
+|---bin (binary files)
+|   |---./a10
+|   |---./DocumentCollectionTest
+|   |---./NgramCollectionTest
+|
+|---include (header files)
+|   |---catch.hpp
+|   |---DocumentCollection.hpp
+|   |---NgramColection.hpp
+|
+|---src (source files)
+|   |---DocumentCollection.cpp
+|   |---NgramCollection.cpp
+|   |---unitTests-DocumentCollection.cpp
+|   |---unitTests-NgramCollection.cpp
+|   |---testa10.sh
+|   |---Makefile
+|   |---object
+|   |---a10.cpp
+|
+|---tests
+
+1: Running program
+    The command 'make' in src makes the a10 binary. It will be located in ./bin/a10
+The command line argument is:
+    $ /#PATH_TO_/bin/a10 DOCUMENT_LIST (FLAG[l,m, or h])
+
+The FLAG changes the sensitivity (see below), and is optional. THe program will
+default to 'm' if there is no flag.
+
+The binaries can be cleaned from the ./bin/ and ./src/object using 'make clean'
+
+The program will run by displaying every pair of documents that are being compared.
+
+2:Testing
+    Our testing suite comprises 2 main features. One is a set of unit tests that 
+checks the major functions that return values in both DocumentCollection and 
+NGramCollection. This checks all functions in DocumentCollection and
+NgramCollection that return a value, or those that take in a value. Most of our
+functions, however, mostly are output functions or are void return that modify
+our private container classes. The unit tests therefore cannot really test these
+functions that well.
+
+    The other aspect of our testing are the automatic tests that are 
