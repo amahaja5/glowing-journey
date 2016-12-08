@@ -12,7 +12,6 @@
 #include <iostream>
 #include <fstream>
 
-std::map<std::vector<std::string>, int> freq; // apologies for this, if this is in our class file, it returns
                                               // _M_constructor null error
 void DocumentCollection :: pushBackDoc(std::pair<std::string,NgramCollection> docNgram) {
 	docVector.push_back(docNgram);

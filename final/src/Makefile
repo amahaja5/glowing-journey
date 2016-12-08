@@ -29,7 +29,8 @@ $(shell mkdir -p $(BIN_DIR))
 # targets 
 ###############################
 
-all: $(BIN_DIR)/a10 $(BIN_DIR)/unitTest
+all: $(BIN_DIR)/a10 $(BIN_DIR)/NgramCollectionTest $(BIN_DIR)/DocumentCollectionTest
+
 
 test: $(BIN_DIR)/NgramCollectionTest $(BIN_DIR)/DocumentCollectionTest
 
@@ -72,4 +73,4 @@ $(OBJ_DIR)/DocumentCollection.o: DocumentCollection.cpp $(INC_DIR)/DocumentColle
 # clean up generated files
 clean:
 	@echo removing generated files...
-	@rm -f $(OBJ_DIR)/*.o 
+	@rm -f $(OBJ_DIR)/*.o  $(BIN_DIR)/*
