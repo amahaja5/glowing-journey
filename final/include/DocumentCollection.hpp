@@ -66,6 +66,7 @@ private:
   
   std::vector<std::pair<std::string, std::string> > plPairs;
   
+  std::map<std::vector<std::string>, int> freq; // apologies for this, if this is in our class file, it returns
 //  std::map<std::pair<std::string, std::string>, double> pairsWithScore;
 
   int n;

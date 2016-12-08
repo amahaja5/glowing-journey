@@ -46,4 +46,4 @@ functions, however, mostly are output functions or are void return that modify
 our private container classes. The unit tests therefore cannot really test these
 functions that well.
 
-    The other aspect of our testing are the automatic tests that are 
+    The other aspect of our testing are the automatic tests that are  
