@@ -1,0 +1,143 @@
+commit 558a417dbabfac7d07d1f06776133574edc54fef
+Author: Avi Mahajan <mahajan.avi@gmail.com>
+Date:   Wed Dec 7 22:04:10 2016 -0500
+
+    Cleaned up some of our source files, added some comments, made the output look nice (added some extra newlines), and finally fixed the tests because of the newlines.
+
+commit 7e281c7ae31c073caa3904ab04f28544ee264215
+Author: Avi Mahajan <mahajan.avi@gmail.com>
+Date:   Wed Dec 7 21:44:33 2016 -0500
+
+    Finished README, hopefully
+
+commit 7c9a708a08aecbe3070e772c260ddd682f0fec1a
+Author: Avi Mahajan <mahajan.avi@gmail.com>
+Date:   Wed Dec 7 20:06:18 2016 -0500
+
+    removed binaries
+
+commit 7d2098c992df8ee5801de1ab1fef045dd09c1cbc
+Author: Avi Mahajan <mahajan.avi@gmail.com>
+Date:   Wed Dec 7 20:05:30 2016 -0500
+
+    Updated Makefile to make sure that make clean actually cleans what we need to clean, and that make creates all the test files
+
+commit 0915f8c4e400c7b78dad5d0aeaf81cdb5f83005a
+Author: Avi Mahajan <mahajan.avi@gmail.com>
+Date:   Wed Dec 7 19:55:19 2016 -0500
+
+    added README, removed some binaries.
+
+commit 51cb77af0c55eb64ae8ea14bc792d003f1d4f947
+Author: Avi Mahajan <mahajan.avi@gmail.com>
+Date:   Wed Dec 7 13:08:20 2016 -0500
+
+    added some tests, hopefully now they appear
+
+commit 8e612963c9aee58865dd86843f2fe01dd27f4098
+Author: Avi Mahajan <mahajan.avi@gmail.com>
+Date:   Wed Dec 7 04:19:55 2016 -0500
+
+    Added header comments for every file (so we don't lose points for that). Still need a readme
+
+commit 3e8c21ee3cc0e332990933300d755a8f0626aad4
+Author: Avi Mahajan <mahajan.avi@gmail.com>
+Date:   Wed Dec 7 04:03:04 2016 -0500
+
+    added testing script, changed several of the testing program inputs to more standardized names, added correct outputs.
+
+commit f7d7fb6a311fc1fcbc53af18f9a8a9f275db942f
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Wed Dec 7 03:26:16 2016 -0500
+
+    Added testfiles
+
+commit 94c63cdea39025924ef52000a83be5227162df67
+Author: Avi Mahajan <mahajan.avi@gmail.com>
+Date:   Wed Dec 7 03:10:08 2016 -0500
+
+    added a test folder and some more assertions to the unit tests.
+
+commit a83e77f7c64384ad6ff121dce53000847e56fd8d
+Author: Avi Mahajan <mahajan.avi@gmail.com>
+Date:   Wed Dec 7 01:46:45 2016 -0500
+
+    Added some more unit tests, and corrected the sensitivity values for the different inputs
+
+commit d59574b3b7bb25434cf5044955a662d41bf6d8df
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Wed Dec 7 00:04:39 2016 -0500
+
+    Greatly increased efficiency by reading ngrams to map first
+
+commit 4d95b2544c9512cc62b39b1302af8b27a84031c8
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Tue Dec 6 23:04:37 2016 -0500
+
+    Improved Efficiency
+
+commit 3ecb96bfab563eee8b64aa2f543507da690c9976
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Tue Dec 6 22:34:45 2016 -0500
+
+    Modified function to account for largest value
+
+commit 4d43d666f1cd3240f3e64071382f76343d1d4f33
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Tue Dec 6 01:20:16 2016 -0500
+
+    Added denominator to docScore to compare to a baseline value
+
+commit da7a5901eb529fc7bf8f3ef616a88f8ed5b63542
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Sun Dec 4 23:44:50 2016 -0500
+
+    driver completed, program runs sensitivity needs to be adjusted it seems
+
+commit 9dbc5f7751737ca5903231b7ca7f6cbb89834548
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Sun Dec 4 21:53:58 2016 -0500
+
+    Loaded similar documents into a vector of pairs and created method to print them out
+
+commit 5a2c88d0581751d17339830aac4fa4ea577e0e8e
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Sun Dec 4 20:07:19 2016 -0500
+
+    Created method to compare each vector element to each other
+
+commit 51764b65020116021d341a7424082146964efd38
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Sun Dec 4 16:51:16 2016 -0500
+
+    Wrote sensitivity function working on looping through vector
+
+commit 563b11d31f72cb204549fb84f5b2761df1064340
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Sun Dec 4 15:13:54 2016 -0500
+
+    Changed type of Ngram collection to simplify process, also using vector of pairs in document collection
+
+commit bc9ea59088a7d74b4e7f17ce361d353bc6161d63
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Sat Dec 3 16:44:07 2016 -0500
+
+    Modified code to read each file to an element in a vector of ngram collections
+
+commit ca18fddc2ac8d6c1ae1133e476ccc881b505484f
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Sat Dec 3 01:10:16 2016 -0500
+
+    Set up files that will be used
+
+commit 8e07ea62853d643deb0f9773db3c820c13868cda
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Fri Dec 2 23:51:09 2016 -0500
+
+    final/
+
+commit a055d4daa3a29f203d5943f0f1ba100d0459b119
+Author: Nick Skacel <nskacel1@jhu.edu>
+Date:   Tue Nov 22 22:32:19 2016 -0500
+
+    Setup directory structure
